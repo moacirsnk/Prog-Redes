@@ -1,0 +1,17 @@
+require 'socket'
+
+socket = UDPSocket.new
+socket.connect('localhost', 2100)
+
+ip = "10.1.2.3" #IP estabelecido para teste
+dominio = "acari" #Nome do domínio
+
+msg = "IP #{dominio}"#Primeiramente faz a consulta
+socket.puts msg
+
+data, sender = socket.recvfrom(1024)
+dados = data.split
+
+puts dados[-1]
+
+
